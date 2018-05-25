@@ -30,7 +30,7 @@ RSpec.describe "Api::V1::Musics", type: :request do
       JSON
       @params = JSON.parse(json, symbolize_names: true)
     end
-    it "ステータスコードが201であること" do
+    it "ステータスコードが201であること", autodoc: true do
       post api_v1_artwork_musics_path(1, format: :json), params: @params
       expect(response).to have_http_status(201)
     end
