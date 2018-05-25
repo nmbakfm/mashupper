@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_25_044109) do
+ActiveRecord::Schema.define(version: 2018_05_25_114357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "artwork_musics", force: :cascade do |t|
+    t.bigint "artwork_id"
+    t.bigint "music_id"
+    t.integer "usage"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artwork_id"], name: "index_artwork_musics_on_artwork_id"
+    t.index ["music_id"], name: "index_artwork_musics_on_music_id"
+  end
 
   create_table "artworks", force: :cascade do |t|
     t.bigint "user_id"
@@ -69,13 +79,12 @@ ActiveRecord::Schema.define(version: 2018_05_25_044109) do
   end
 
   create_table "musics", force: :cascade do |t|
-    t.bigint "artwork_id"
+    t.bigint "user_id"
     t.string "title"
-    t.integer "usage"
     t.float "beginning_margin_sec"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["artwork_id"], name: "index_musics_on_artwork_id"
+    t.index ["user_id"], name: "index_musics_on_user_id"
   end
 
   create_table "phrases", force: :cascade do |t|
@@ -100,10 +109,12 @@ ActiveRecord::Schema.define(version: 2018_05_25_044109) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "artwork_musics", "artworks"
+  add_foreign_key "artwork_musics", "musics"
   add_foreign_key "artworks", "users"
   add_foreign_key "bpms", "musics"
   add_foreign_key "chords", "musics"
   add_foreign_key "hyoshis", "musics"
-  add_foreign_key "musics", "artworks"
+  add_foreign_key "musics", "users"
   add_foreign_key "phrases", "musics"
 end

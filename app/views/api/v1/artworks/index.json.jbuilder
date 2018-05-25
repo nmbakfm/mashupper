@@ -1,1 +1,1 @@
-json.array! @artworks, partial: 'artworks/artwork', as: :artwork
+json.array! @artworks, partial: 'api/v1/artworks/artwork', as: :artwork

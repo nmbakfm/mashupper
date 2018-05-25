@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe "Api::V1::Artworks", type: :request do
+  describe 'GET /api/v1/artworks' do
+    it "ステータスコードが200であること", autodoc: true do
+      Artwork.create!(id: 1, title: 'thisistitle') unless Artwork.exists?(id: 1)
+      get api_v1_artworks_path(format: :json)
+      expect(response).to have_http_status(200)
+    end
+  end
   describe "POST /api/v1/artworks" do
     before do
       json = <<-JSON

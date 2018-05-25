@@ -23,7 +23,7 @@ class Api::V1::ArtworksController < ApplicationController
   # PATCH/PUT /artworks/1.json
   def update
     if @artwork.update(artwork_params)
-      render :show, status: :ok, location: @artwork
+      render :show, status: :ok, location: [:api, :v1, @artwork]
     else
       render json: @artwork.errors, status: :unprocessable_entity
     end
