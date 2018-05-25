@@ -15,18 +15,18 @@ port        ENV.fetch("PORT") { 3000 }
 #
 environment ENV.fetch("RAILS_ENV") { "development" }
 
-# Specifies the number of `workers` to boot in clustered mode.
-# Workers are forked webserver processes. If using threads and workers together
-# the concurrency of the application would be max `threads` * `workers`.
-# Workers do not work on JRuby or Windows (both of which do not support
+# Specifies the number of `artworkers` to boot in clustered mode.
+# Artworkers are forked webserver processes. If using threads and artworkers together
+# the concurrency of the application would be max `threads` * `artworkers`.
+# Artworkers do not artwork on JRuby or Windows (both of which do not support
 # processes).
 #
-# workers ENV.fetch("WEB_CONCURRENCY") { 2 }
+# artworkers ENV.fetch("WEB_CONCURRENCY") { 2 }
 
-# Use the `preload_app!` method when specifying a `workers` number.
+# Use the `preload_app!` method when specifying a `artworkers` number.
 # This directive tells Puma to first boot the application and load code
 # before forking the application. This takes advantage of Copy On Write
-# process behavior so workers use less memory.
+# process behavior so artworkers use less memory.
 #
 # preload_app!
 

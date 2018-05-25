@@ -6,7 +6,7 @@ class CreateChords < ActiveRecord::Migration[5.2]
       t.string :primary_category
       t.string :root
       t.integer :bar
-      t.float, :beat
+      t.float :beat
       t.integer :harmony_func
 
       t.timestamps
