@@ -58,10 +58,14 @@ ActiveRecord::Schema.define(version: 2018_05_25_044109) do
   end
 
   create_table "keys", force: :cascade do |t|
+    t.bigint "music_id"
     t.string "tonica"
     t.integer "key"
+    t.integer "bar"
+    t.float "beat"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["music_id"], name: "index_keys_on_music_id"
   end
 
   create_table "musics", force: :cascade do |t|

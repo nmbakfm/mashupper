@@ -11,10 +11,5 @@
 
 class Artwork < ApplicationRecord
   belongs_to :user, optional: true
-
-  def self.build_by_json json
-    artwork = new(
-      title: 'hoge'
-    )
-  end
+  has_many :musics
 end

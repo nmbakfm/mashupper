@@ -12,7 +12,7 @@ class Api::V1::ArtworksController < ApplicationController
 
   # POST /artworks.json
   def create
-    @artwork = Artwork.build_by_json(artwork_params)
+    @artwork = Artwork.new(artwork_params)
     if @artwork.save
       render :show, status: :created, location: [:api, :v1, @artwork]
     else
@@ -42,6 +42,6 @@ class Api::V1::ArtworksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def artwork_params
-      params
+      params.permit(:title)
     end
 end
