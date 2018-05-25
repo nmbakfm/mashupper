@@ -1,0 +1,9 @@
+bundle exec rails g scaffold user family_name:string first_name:string
+bundle exec rails g scaffold mashup user:references title:string
+bundle exec rails g scaffold music mashup:references title:string usage:integer beginning_margin_sec:float
+bundle exec rails g scaffold chord music:references chord_name:string primary_category:string root:string bar:integer beat:float, harmony_func:integer
+bundle exec rails g scaffold tension tension:string
+bundle exec rails g scaffold bpm music:references bpm:float bar:integer beat:float
+bundle exec rails g scaffold hyoshi music:references denominator:integer numerator:integer bar:integer beat:float
+bundle exec rails g scaffold phrase music:references bar:integer beat:float
+bundle exec rails g scaffold key tonica:string key:integer
